@@ -17,7 +17,7 @@
     # GitVersion doesn't support SSH, so change the origin remote to an HTTPS URL (if using a private server: 
     # http://help.appveyor.com/discussions/kb/17-getting-gitversion-to-work-with-private-bitbucketgithub-repositories
     # Ensure the GITVERSION_REMOTE_USERNAME and GITVERSION_REMOTE_PASSWORD env variables are set in either this file or the project configuration.  
-    - git remote set-url origin https://github.com/daleholborow/iayos.dapperCRUD.git
+    - git remote set-url origin https://github.com/daleholborow/iayos.DapperCRUD.git
     - GitVersion -output buildserver    
     
   before_build:
