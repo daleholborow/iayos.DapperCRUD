@@ -9,10 +9,10 @@
 		<licenseUrl>https://github.com/daleholborow/iayos.DapperCRUD/blob/master/LICENSE</licenseUrl>
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
 		<description>
-			A clone+mod of Dapper.SimpleCRUD (some private static methods caused issues), that adds strongly typed selectors
+			A clone+mod of Dapper.SimpleCRUD (some private static methods caused issues that meant I couldn't simply extend the partial class), that adds strongly typed selectors
 			by using reflection over DB Entity classes (for better, compile-time error checking rather than more problematic use
-			of anonymous conditions)
-			Author not affiliated with Dapper.SimpleCRUD in any way, but shout outs to Eric for his work (and great doco)! 
+			of anonymous conditions). Functionality written against MSSQL, as I am not currently using any of the other SimpleCRUD db provider options. it may work, who knows.
+			Author not affiliated with Dapper.SimpleCRUD in any way, but shout outs to Eric Coffman (ericdc1) for his work (and great doco)!
 			This package not does this come with any warranty. Contributions welcome.
 		</description>
 		<releaseNotes>
@@ -20,7 +20,7 @@
 		</releaseNotes>
 		<copyright>Copyright © 2017</copyright>
 		<summary>
-			Mod of Dapper.SimpleCRUD to add typesafe CRUD for common operations (especially Load operations)
+			Mod of Dapper.SimpleCRUD to add typesafe CRUD for common operations (specifically "load entities/properties X lists where property Y like/in/equals" operations)
 		</summary>
 		<tags>Dapper CRUD C# typesafe in-a-year-or-so</tags>
 		<title>iayos.DapperCRUD</title>
