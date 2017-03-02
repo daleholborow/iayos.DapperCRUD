@@ -10,8 +10,8 @@ by the SimpleCRUD style of using anoymous objects for query parameters (which ar
 Additionally, I wanted to often 
 
 - GetEntitiesWhereColumnEquals
-- GetEntitiesWhereColumnIn
-- GetEntitiesWhereColumnLike
+- GetEntitiesWherePropertyIn
+- GetEntitiesWherePropertyLike
 
 and
 
@@ -36,9 +36,52 @@ public class User
 }
       
 var agesOfInterest = new List<int> { 18, 20, 22 };
-var user = connection.GetWhereIn<User>(x => x.Age, agesOfInterest);   
+var user = connection.GetEntitiesWherePropertyIn<User>(x => x.Age, agesOfInterest);   
 ```
 Results in executing this SQL 
 ```sql
 Select Id, Name, Age from [User] where Id in (18, 20, 22) 
 ```
+
+
+and
+
+
+```csharp
+      
+var nameWillContain = "%an%";
+var user = connection.GetEntitiesWherePropertyLike<User>(x => x.Name, nameWillContain);   
+```
+Results in executing this SQL 
+```sql
+Select Id, Name, Age from [User] where Name like '%an%'
+```
+
+
+and
+
+
+```csharp
+      
+var nameWillStart = "an%";
+var user = connection.GetEntitiesWherePropertyLike<User>(x => x.Name, nameWillStart);   
+```
+Results in executing this SQL 
+```sql
+Select Id, Name, Age from [User] where Name like 'an%'
+```
+
+
+and
+
+
+```csharp
+      
+var ageOfInterest = 50;
+var user = connection.GetColumnXWhereColumnYEquals<User, string, long>(x => x.Name, x => x.Age, ageOfInterest);   
+```
+Results in executing this SQL 
+```sql
+Select Name from [User] where Age = 50;
+```
+

@@ -44,7 +44,7 @@ namespace iayos.DapperCRUD
 		/// <param name="type"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static string GetCleanTableName(Type type)
+		private static string GetCleanTableName(Type type)
 		{
 			var dirtyTableName = GetTableName(type);
 			return CleanDbElementName(dirtyTableName);
@@ -75,7 +75,7 @@ namespace iayos.DapperCRUD
 		/// <param name="entity"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static string GetCleanTableName(object entity)
+		private static string GetCleanTableName(object entity)
 		{
 			var type = entity.GetType();
 			var tableName = GetCleanTableName(type);
@@ -83,7 +83,7 @@ namespace iayos.DapperCRUD
 		}
 
 
-		public static List<TDesired> GetXsWhereYIn<TTable, TDesired, TIn>(
+		public static List<TDesired> GetEntitiesWherePropertyIn<TDesired, TIn>(
 			this IDbConnection connection,
 			string tableName,
 			string desiredColumnName,
@@ -122,7 +122,7 @@ namespace iayos.DapperCRUD
 		/// <param name="transaction"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static List<TDesired> GetXsWhereYIn<TEntity, TDesired, TIn>(
+		public static List<TDesired> GetEntitiesWherePropertyIn<TEntity, TDesired, TIn>(
 			this IDbConnection connection,
 			Expression<Func<TEntity, TDesired>> desiredPropertyRefExpr,
 			Expression<Func<TEntity, TIn>> inPropertyRefExpr,
@@ -132,7 +132,7 @@ namespace iayos.DapperCRUD
 			var tableName = GetCleanTableName<TEntity>();
 			var desiredColumnName = PropertyHelper.GetName(desiredPropertyRefExpr);
 			var equalsColumnName = PropertyHelper.GetName(inPropertyRefExpr);
-			return connection.GetXsWhereYIn<TEntity, TDesired, TIn>(tableName, desiredColumnName, equalsColumnName, inValues, transaction);
+			return connection.GetEntitiesWherePropertyIn<TDesired, TIn>(tableName, desiredColumnName, equalsColumnName, inValues, transaction);
 		}
 
 
@@ -196,7 +196,7 @@ namespace iayos.DapperCRUD
 		/// <param name="transaction"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static List<TColumn> GetXsWhereYLike<TEntity, TColumn>(
+		public static List<TColumn> GetColumnXWhereColumnYLike<TEntity, TColumn>(
 			this IDbConnection connection,
 			string tableName,
 			string desiredColumnName,
@@ -227,7 +227,7 @@ namespace iayos.DapperCRUD
 		/// <param name="transaction"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static List<TDesired> GetXsWhereYLike<TEntity, TDesired>(
+		public static List<TDesired> GetColumnXWhereColumnYLike<TEntity, TDesired>(
 			this IDbConnection connection,
 			Expression<Func<TEntity, TDesired>> desiredPropertyRefExpr,
 			Expression<Func<TEntity, object>> likePropertyRefExpr,
@@ -237,7 +237,7 @@ namespace iayos.DapperCRUD
 			var tableName = GetCleanTableName<TEntity>();
 			var desiredColumnName = PropertyHelper.GetName(desiredPropertyRefExpr);
 			var likeColumnName = PropertyHelper.GetName(likePropertyRefExpr);
-			return connection.GetXsWhereYLike<TEntity, TDesired>(tableName, desiredColumnName, likeColumnName, likeValue, transaction);
+			return connection.GetColumnXWhereColumnYLike<TEntity, TDesired>(tableName, desiredColumnName, likeColumnName, likeValue, transaction);
 		}
 
 
@@ -253,7 +253,7 @@ namespace iayos.DapperCRUD
 		/// <param name="transaction"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static List<TEntity> GetEntitiesWhereYIn<TEntity, TIn>(
+		public static List<TEntity> GetEntitiesWherePropertyIn<TEntity, TIn>(
 			this IDbConnection connection,
 			string tableName,
 			string columnName,
@@ -284,7 +284,7 @@ namespace iayos.DapperCRUD
 		/// <param name="transaction"></param>
 		/// <returns></returns>
 		[DebuggerStepThrough]
-		public static List<TEntity> GetEntitiesWhereYLike<TEntity>(
+		public static List<TEntity> GetEntitiesWherePropertyLike<TEntity>(
 			this IDbConnection connection,
 			string tableName,
 			string columnName,
@@ -1267,6 +1267,7 @@ namespace iayos.DapperCRUD
 		}
 
 		#endregion Dapper.SimpleCRUD functionality
+
 	}
 
 
