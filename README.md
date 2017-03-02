@@ -9,7 +9,7 @@ by the SimpleCRUD style of using anoymous objects for query parameters (which ar
 
 Additionally, I wanted to often 
 
-- GetEntitiesWhereColumnEquals
+- GetEntitiesWherePropertyEquals
 - GetEntitiesWherePropertyIn
 - GetEntitiesWherePropertyLike
 
@@ -20,11 +20,8 @@ and
 - GetColumnXWhereColumnYLike
 
 
-# History:
 
-Had to take the full SimpleCRUD because the GetTableName private method was causing me issues... may investigate further in future.
-
-Example Usage:
+# Example Usage:
 
 
 ```csharp
@@ -84,4 +81,15 @@ Results in executing this SQL
 ```sql
 Select Name from [User] where Age = 50;
 ```
+
+
+etc etc
+
+
+# History:
+
+Had to take the full SimpleCRUD because the GetTableName private static method was causing me issues ('method unavailable')... may 
+investigate further in future, to see if there is some way to directly leverage existing Dapper.SimpleCRUD partial class via nuget references.
+
+
 
