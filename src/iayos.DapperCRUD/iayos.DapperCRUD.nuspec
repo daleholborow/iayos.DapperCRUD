@@ -9,7 +9,7 @@
 		<licenseUrl>https://github.com/daleholborow/iayos.DapperCRUD/blob/master/LICENSE</licenseUrl>
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
 		<description>
-			A clone+mod of Dapper.SimpleCRUD but with type-safe common CRUD methods instead of anonymous parameter objects. 
+			A clone+mod of Dapper.SimpleCRUD but with type-safe common CRUD methods instead of error-prone anonymous parameter objects. 
 			(some private static methods caused issues that meant I couldn't simply extend the SimpleCRUD partial class) Adds strongly typed selectors
 			by using reflection over DB Entity classes (for better, compile-time error checking rather than more problematic use
 			of anonymous conditions). Functionality written against MSSQL, as I am not currently using any of the other SimpleCRUD db provider options. it may work, who knows.
